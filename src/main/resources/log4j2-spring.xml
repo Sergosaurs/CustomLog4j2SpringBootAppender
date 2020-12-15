@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="30" packages="cn.lqdev.learning">
+    <!--Define appenders-->
+    <appenders>
+        <MyLog4j2 name="remoteEye" printString="(RemoteEyeAppender)">
+            <!--Format of output log -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </MyLog4j2>
+    </appenders>
+    <!-- Then define the logger, the appender will only take effect if the appender is defined and imported ->
+
+            <!-Filter out some useless DEBUG information from spring and mybatis -->
+    <loggers>
+        <logger name="org.springframework" level="INFO"></logger>
+        <logger name="org.mybatis" level="INFO"></logger>
+        <!-- Set to INFO under the custom package, you can see that the output log does not contain debug output -->
+        <logger name="cn.lqdev.learning" level="INFO"/>
+        <root level="info">
+            <appender-ref ref="remoteEye"/>
+        </root>
+    </loggers>
+</configuration>
